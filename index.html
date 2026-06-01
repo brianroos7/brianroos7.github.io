@@ -177,24 +177,6 @@
       box-shadow: 0 8px 28px rgba(201,168,76,0.25);
     }
 
-    .btn-ghost {
-      display: inline-block;
-      color: var(--white);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.9rem 2rem;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: var(--radius);
-      margin-left: 1rem;
-      transition: border-color var(--transition), background var(--transition);
-    }
-    .btn-ghost:hover {
-      border-color: rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.05);
-    }
 
     /* ── Section shared ── */
     section { padding: 6rem 1.5rem; }
@@ -275,6 +257,31 @@
       font-size: 0.9rem;
       color: var(--gray);
       line-height: 1.65;
+    }
+
+    .card-topics {
+      list-style: none;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .card-topics li {
+      font-size: 0.82rem;
+      color: var(--gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      line-height: 1.5;
+    }
+    .card-topics li::before {
+      content: '→';
+      color: var(--gold);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
     }
 
     /* ── About ── */
@@ -370,7 +377,6 @@
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-visual { height: 220px; }
       .cta-strip { flex-direction: column; padding: 2rem; text-align: center; }
-      .btn-ghost { margin-left: 0; margin-top: 0.75rem; }
     }
   </style>
 </head>
@@ -399,7 +405,6 @@
       </p>
       <div class="reveal reveal-delay-3">
         <a href="contact.html" class="btn-primary">Get in Touch</a>
-        <a href="#services" class="btn-ghost">Our Services</a>
       </div>
     </div>
   </section>
@@ -423,7 +428,13 @@
             </svg>
           </div>
           <h3>IFC Advisory</h3>
-          <p>Independent, vendor-neutral guidance from day one. We assess your connectivity requirements, evaluate provider options, and build a clear strategy tailored to your operation — with no commercial bias.</p>
+          <p>Independent, vendor-neutral guidance from day one. We assess your connectivity requirements, evaluate provider options across the full LEO and GEO solution landscape, and build a clear strategy tailored to your operation — with no commercial bias.</p>
+          <ul class="card-topics">
+            <li>LEO & GEO connectivity solution evaluation — including the latest low-latency LEO and high-capacity GEO technologies from today's leading providers</li>
+            <li>Operator & passenger demand analysis — understanding what your crew and passengers actually need from connectivity</li>
+            <li>Fleet requirements assessment — matching the right solution to your aircraft type, route network, and operational profile</li>
+            <li>Owner, charter & VIP advisory — tailored guidance for business aviation and head of state operators with bespoke connectivity needs</li>
+          </ul>
         </div>
         <div class="service-card reveal reveal-delay-1">
           <div class="service-icon">
