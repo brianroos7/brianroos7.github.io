@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services Background Preview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0b1120; --navy2: #111b30; --navy3: #1a2744;
+      --gold: #c9a84c; --gold-l: #e8c96a; --white: #f5f5f0; --gray: #8a9ab8;
+      --transition: 0.3s ease;
+    }
+    body { background: #060d1a; font-family: 'Segoe UI', system-ui, sans-serif; color: var(--white); }
+
+    .option-label {
+      text-align: center; padding: 1.5rem;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); background: #060d1a;
+      display: flex; align-items: center; gap: 1rem; justify-content: center;
+    }
+    .option-label span { display: inline-block; height: 1px; width: 60px; background: rgba(201,168,76,0.25); }
+
+    section { padding: 5rem 1.5rem; position: relative; overflow: hidden; }
+    .container { max-width: 1080px; margin: 0 auto; position: relative; z-index: 2; }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+    .section-subtitle { color: var(--gray); font-size: 1.05rem; max-width: 540px; margin-bottom: 3.5rem; }
+    hr.gold-rule { border: none; height: 1px; background: linear-gradient(90deg, var(--gold) 0%, transparent 60%); margin-bottom: 3.5rem; opacity: 0.4; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card { background: rgba(26,39,68,0.85); backdrop-filter: blur(6px); border: 1px solid rgba(201,168,76,0.12); border-radius: 10px; padding: 2rem; }
+    .service-card:hover { border-color: rgba(201,168,76,0.4); }
+    .service-icon { width: 48px; height: 48px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; background: rgba(201,168,76,0.1); border-radius: 8px; color: var(--gold); }
+    .service-icon svg { width: 24px; height: 24px; }
+    .service-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+    .pick-bar { text-align: center; padding: 1.5rem; background: #060d1a; }
+    .pick-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: none; padding: 0.75rem 2rem; border-radius: 6px; cursor: pointer; font-family: inherit; }
+    .pick-btn:hover { background: var(--gold-l); }
+
+    /* ── Option 1: Satellite ── */
+    #opt1 {
+      background:
+        linear-gradient(to right, rgba(11,17,32,0.92) 0%, rgba(11,17,32,0.75) 60%, rgba(11,17,32,0.9) 100%),
+        url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1400&q=70&auto=format') center / cover no-repeat;
+    }
+
+    /* ── Option 2: WiFi emblem ── */
+    #opt2 { background: var(--navy2); }
+    #opt2 .bg-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* ── Option 3: Orbit ── */
+    #opt3 { background: var(--navy2); }
+    #opt3 .bg-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+
+  <!-- Option 1 -->
+  <div class="option-label"><span></span>Option 1 — Satellite Imagery<span></span></div>
+  <section id="opt1">
+    <div class="container">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">End-to-End IFC Consultancy</h2>
+      <p class="section-subtitle">From initial strategic advice through to full account management and customer reporting — we work alongside operators as a trusted, independent IFC partner.</p>
+      <hr class="gold-rule" />
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+          <h3>IFC Advisory</h3>
+          <p>Independent, vendor-neutral guidance across the full LEO and GEO solution landscape.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Account Management</h3>
+          <p>Managing your IFC provider relationship on your behalf — holding providers accountable at every stage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <h3>Reporting & Liaison</h3>
+          <p>Clear, accurate reporting back to your team — bridging the gap between your operation and your provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="pick-bar"><button class="pick-btn" onclick="alert('Selection: Satellite Imagery')">Select Option 1</button></div>
+
+  <!-- Option 2 -->
+  <div class="option-label"><span></span>Option 2 — WiFi Emblem<span></span></div>
+  <section id="opt2">
+    <svg class="bg-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid meet">
+      <g transform="translate(92%, 50%) translate(-0,0)">
+        <path d="M-160 0 A170 170 0 0 1 160 0" stroke="#c9a84c" stroke-width="28" fill="none" stroke-linecap="round" opacity="0.055"/>
+        <path d="M-110 0 A117 117 0 0 1 110 0" stroke="#c9a84c" stroke-width="26" fill="none" stroke-linecap="round" opacity="0.065"/>
+        <path d="M-62 0 A66 66 0 0 1 62 0" stroke="#c9a84c" stroke-width="24" fill="none" stroke-linecap="round" opacity="0.08"/>
+        <circle cx="0" cy="0" r="18" fill="#c9a84c" opacity="0.09"/>
+      </g>
+      <g transform="translate(8%, 50%)">
+        <path d="M-90 0 A96 96 0 0 1 90 0" stroke="#c9a84c" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.04"/>
+        <path d="M-52 0 A56 56 0 0 1 52 0" stroke="#c9a84c" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.05"/>
+        <path d="M-24 0 A26 26 0 0 1 24 0" stroke="#c9a84c" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.06"/>
+        <circle cx="0" cy="0" r="10" fill="#c9a84c" opacity="0.07"/>
+      </g>
+    </svg>
+    <div class="container">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">End-to-End IFC Consultancy</h2>
+      <p class="section-subtitle">From initial strategic advice through to full account management and customer reporting — we work alongside operators as a trusted, independent IFC partner.</p>
+      <hr class="gold-rule" />
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+          <h3>IFC Advisory</h3>
+          <p>Independent, vendor-neutral guidance across the full LEO and GEO solution landscape.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Account Management</h3>
+          <p>Managing your IFC provider relationship on your behalf — holding providers accountable at every stage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <h3>Reporting & Liaison</h3>
+          <p>Clear, accurate reporting back to your team — bridging the gap between your operation and your provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="pick-bar"><button class="pick-btn" onclick="alert('Selection: WiFi Emblem')">Select Option 2</button></div>
+
+  <!-- Option 3 -->
+  <div class="option-label"><span></span>Option 3 — Orbital Paths<span></span></div>
+  <section id="opt3">
+    <svg class="bg-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <ellipse cx="78%" cy="50%" rx="32%" ry="55%" stroke="#c9a84c" stroke-width="0.7" fill="none" opacity="0.13"/>
+      <ellipse cx="78%" cy="50%" rx="24%" ry="42%" stroke="#c9a84c" stroke-width="0.5" fill="none" opacity="0.09"/>
+      <ellipse cx="78%" cy="50%" rx="40%" ry="66%" stroke="#c9a84c" stroke-width="0.5" fill="none" opacity="0.07"/>
+      <ellipse cx="78%" cy="50%" rx="48%" ry="76%" stroke="#c9a84c" stroke-width="0.4" fill="none" opacity="0.05"/>
+      <circle cx="78%" cy="50%" r="7" fill="#c9a84c" opacity="0.25"/>
+      <circle cx="78%" cy="50%" r="3.5" fill="#c9a84c" opacity="0.5"/>
+      <circle cx="46%" cy="18%" r="3" fill="#c9a84c" opacity="0.22"/>
+      <circle cx="94%" cy="72%" r="2.5" fill="#c9a84c" opacity="0.18"/>
+      <circle cx="58%" cy="78%" r="2" fill="#c9a84c" opacity="0.15"/>
+      <circle cx="62%" cy="26%" r="2" fill="#c9a84c" opacity="0.15"/>
+      <line x1="78%" y1="50%" x2="46%" y2="18%" stroke="#c9a84c" stroke-width="0.4" opacity="0.1"/>
+      <line x1="78%" y1="50%" x2="94%" y2="72%" stroke="#c9a84c" stroke-width="0.4" opacity="0.08"/>
+      <line x1="78%" y1="50%" x2="58%" y2="78%" stroke="#c9a84c" stroke-width="0.3" opacity="0.08"/>
+    </svg>
+    <div class="container">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">End-to-End IFC Consultancy</h2>
+      <p class="section-subtitle">From initial strategic advice through to full account management and customer reporting — we work alongside operators as a trusted, independent IFC partner.</p>
+      <hr class="gold-rule" />
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+          <h3>IFC Advisory</h3>
+          <p>Independent, vendor-neutral guidance across the full LEO and GEO solution landscape.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Account Management</h3>
+          <p>Managing your IFC provider relationship on your behalf — holding providers accountable at every stage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <h3>Reporting & Liaison</h3>
+          <p>Clear, accurate reporting back to your team — bridging the gap between your operation and your provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="pick-bar"><button class="pick-btn" onclick="alert('Selection: Orbital Paths')">Select Option 3</button></div>
+
+</body>
+</html>
