@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logo Export — Brian Roos Aviation Consultancy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #0b1120;
+      --navy2: #111b30;
+      --navy3: #1a2744;
+      --gold:  #c9a84c;
+      --white: #f5f5f0;
+      --gray:  #8a9ab8;
+    }
+    body { background: var(--navy); color: var(--white); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; padding: 3rem 1.5rem; }
+    .container { max-width: 760px; margin: 0 auto; }
+
+    .page-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .page-sub { color: var(--gray); font-size: 0.95rem; margin-bottom: 3rem; }
+
+    .previews { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+    .preview-box { border-radius: 10px; padding: 2rem; border: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; justify-content: center; min-height: 100px; }
+    .preview-box.dark { background: var(--navy2); }
+    .preview-box.white { background: #ffffff; }
+    .preview-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.75rem; }
+
+    .downloads { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .dl-card { background: var(--navy2); border: 1px solid rgba(201,168,76,0.12); border-radius: 10px; padding: 1.5rem; }
+    .dl-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .dl-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.55; margin-bottom: 1.25rem; }
+    .dl-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--gold); color: var(--navy); font-weight: 700;
+      font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+      border: none; padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer;
+      font-family: inherit; transition: background 0.2s;
+    }
+    .dl-btn:hover { background: #e8c96a; }
+    .dl-btn.ghost {
+      background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.15);
+      margin-left: 0.5rem;
+    }
+    .dl-btn.ghost:hover { background: rgba(255,255,255,0.05); }
+
+    .back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gray); font-size: 0.82rem; text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; letter-spacing: 0.05em; }
+    .back:hover { color: var(--white); }
+
+    @media (max-width: 560px) { .previews { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a href="index.html" class="back">← Back to site</a>
+
+  <p class="page-label">Brand Assets</p>
+  <h1>Logo Export</h1>
+  <p class="page-sub">Download the logo for use in email signatures, documents, and presentations.</p>
+
+  <div class="previews">
+    <div>
+      <p class="preview-label">On dark background</p>
+      <div class="preview-box dark" id="preview-dark"></div>
+    </div>
+    <div>
+      <p class="preview-label">On white background</p>
+      <div class="preview-box white" id="preview-white"></div>
+    </div>
+  </div>
+
+  <div class="downloads">
+    <div class="dl-card">
+      <h3>PNG — White background</h3>
+      <p>Best for standard email signatures and Word / PDF documents. 2× resolution for sharp rendering.</p>
+      <button class="dl-btn" onclick="download('white', 'png', 2)">↓ Download PNG</button>
+    </div>
+    <div class="dl-card">
+      <h3>PNG — Dark background</h3>
+      <p>For dark-mode email clients, presentations, and branded documents on dark backgrounds.</p>
+      <button class="dl-btn" onclick="download('dark', 'png', 2)">↓ Download PNG</button>
+    </div>
+    <div class="dl-card">
+      <h3>JPEG — Dark background</h3>
+      <p>Smaller file size for email clients that don't support PNG. Navy background baked in.</p>
+      <button class="dl-btn" onclick="download('dark', 'jpeg', 2)">↓ Download JPEG</button>
+    </div>
+    <div class="dl-card">
+      <h3>SVG — Vector</h3>
+      <p>Scalable vector file. Use in Canva, PowerPoint, Figma, or anywhere that accepts SVG.</p>
+      <a class="dl-btn" href="logo.svg" download="brac-logo.svg">↓ Download SVG</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const GOLD = '#c9a84c';
+  const DARK_TEXT = '#1a1a2e';
+  const LIGHT_TEXT = '#f5f5f0';
+
+  function makeSVG(textColor, w, h) {
+    const s = w / 280;
+    return `<svg viewBox="0 0 280 44" xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
+      <circle cx="22" cy="22" r="17" stroke="${GOLD}" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <ellipse cx="22" cy="22" rx="17" ry="7" stroke="${GOLD}" stroke-width="0.8" fill="none" opacity="0.3"/>
+      <path d="M 7 30 Q 18 6 38 14" stroke="${GOLD}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <circle cx="38" cy="14" r="2.5" fill="${GOLD}"/>
+      <text x="54" y="22" font-family="'Segoe UI',system-ui,sans-serif" font-size="13.5" font-weight="700" letter-spacing="2.5" fill="${textColor}">BRIAN ROOS</text>
+      <text x="55" y="36" font-family="'Segoe UI',system-ui,sans-serif" font-size="7.5" letter-spacing="3.5" fill="${GOLD}">AVIATION CONSULTANCY</text>
+    </svg>`;
+  }
+
+  // Render live previews
+  const darkTextColor = LIGHT_TEXT;
+  const lightTextColor = DARK_TEXT;
+  document.getElementById('preview-dark').innerHTML = makeSVG(darkTextColor, 240, 38);
+  document.getElementById('preview-white').innerHTML = makeSVG(lightTextColor, 240, 38);
+
+  function download(bg, format, scale) {
+    const textColor = bg === 'dark' ? LIGHT_TEXT : DARK_TEXT;
+    const bgColor   = bg === 'dark' ? '#0b1120' : '#ffffff';
+    const w = 280 * scale;
+    const h = 44 * scale;
+
+    const svgStr = makeSVG(textColor, w, h);
+    const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, w, h);
+
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0);
+      URL.revokeObjectURL(url);
+      const link = document.createElement('a');
+      const ext = format === 'jpeg' ? 'jpg' : 'png';
+      link.download = `brac-logo-${bg}.${ext}`;
+      link.href = canvas.toDataURL(format === 'jpeg' ? 'image/jpeg' : 'image/png', 0.95);
+      link.click();
+    };
+    img.src = url;
+  }
+</script>
+</body>
+</html>
